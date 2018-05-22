@@ -1,16 +1,4 @@
-#include <iostream>
-#include <cstdlib>
 #include <sort.hh>
-
-int main() {
-    using namespace std;
-    vector<int> vec {34, 26, 48, 17, 24, 19, 33};
-    mergesort(vec, 0, vec.size() - 1);
-    for (auto i: vec)
-        cout << i << " ";
-    cout << endl;
-    return 0;
-}
 
 /* quicksort */
 int partition(std::vector<int>& arr, int left, int right) {

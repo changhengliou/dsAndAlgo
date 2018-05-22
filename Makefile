@@ -1,13 +1,23 @@
 CC=g++
 CFLAGS=--std=c++14
-ENTRY=main.cc
-INCLUDE=-I .
+INCLUDE=-I ./src
 OUTPUT=ds
+SRCDIR=./src
+OBJDIR=./objs
+
+_OBJS=ds.o sort.o
+OBJS = $(patsubst %,$(OBJDIR)/%,$(_OBJS))
+ENTRY = $(SRCDIR)/main.cc
+
+.PHONY: clean
 
 all: dev
 
-dev: $(ENTRY)
-	$(CC) $< $(CFLAGS) -Wall -g $(INCLUDE) -o $(OUTPUT)
+$(OBJDIR)/%.o: $(SRCDIR)/%.cc $(SRCDIR)/%.hh
+	$(CC) -c $(INCLUDE) $(CFLAGS) -o $@ $<
+
+dev: $(ENTRY) $(OBJS)
+	$(CC) $< $(CFLAGS) -Wall -g $(INCLUDE) $(OBJS) -o $(OUTPUT)
 
 build: $(ENTRY) clean
 	$(CC) $< $(CFLAGS) $(INCLUDE) -o $(OUTPUT)
@@ -16,4 +26,4 @@ build: $(ENTRY) clean
 #	strip -s -R $(OUTPUT) --strip-unneeded -o DS
 
 clean:
-	rm -rf *.o *.dSYM
+	rm -rf $(OBJDIR)/*.o *.dSYM
