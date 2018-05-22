@@ -17,7 +17,22 @@ public:
 };
 
 class Queue {
-
+private:
+    int _size = 0;
+    int _capacity = 10;
+    int _front = 0;
+    int _back = 0;
+    int* _arr;
+public:
+    Queue();
+    Queue(int val);
+    ~Queue();
+    int size();
+    int capacity();
+    bool empty();
+    int front();
+    void push(int val);
+    int pop();
 };
 
 class DoublyLinkedList {

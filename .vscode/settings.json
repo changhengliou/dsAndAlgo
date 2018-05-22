@@ -19,6 +19,8 @@
         "stdexcept": "cpp",
         "type_traits": "cpp",
         "typeinfo": "cpp",
-        "__bit_reference": "cpp"
+        "__bit_reference": "cpp",
+        "ostream": "cpp",
+        "iostream": "cpp"
     }
 }

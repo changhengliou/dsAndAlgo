@@ -5,21 +5,32 @@
 
 int main() {
     using namespace std;
-    Stack stack(10);
+    Queue queue(10);
+    queue.push(1);
+    queue.pop();
     for (int i = 0; i < 20; ++i) {
-        stack.push(i);
+        queue.push(i);
     }
-    cout << "capacity = " << stack.capacity() << ", size = " << stack.size() << endl;
+    cout << "size = " << queue.size() << ", capacity = " << queue.capacity() << endl;
     for (int i = 0; i < 7; ++i) {
-        cout << stack.pop() << endl;
+        cout << queue.pop() << " ";
     }
-    stack.pop();
-    cout << "capacity = " << stack.capacity() << ", size = " << stack.size() << endl;
-    for (int i = 45; i < 79; ++i) {
-        stack.push(i);
+    cout << endl;
+    cout << "size = " << queue.size() << ", capacity = " << queue.capacity() << endl;
+    for (int i = 56; i < 93; ++i) {
+        queue.push(i);
     }
-    cout << "capacity = " << stack.capacity() << ", size = " << stack.size() << endl;
-    cout << stack.top() << endl;
-    cout << "capacity = " << stack.capacity() << ", size = " << stack.size() << endl;
+    cout << "size = " << queue.size() << ", capacity = " << queue.capacity() << endl;
+    for (int i = 0; i < 37; ++i) {
+        cout << queue.pop() << " ";
+    }
+    cout << endl;
+    cout << "size = " << queue.size() << ", capacity = " << queue.capacity() << endl;
+    for (int i = 0; i < 13; ++i) {
+        cout << queue.pop() << " ";
+    }
+    cout << endl;
+    cout << "isEmpty = " << queue.empty() << endl;
+    cout << "size = " << queue.size() << ", capacity = " << queue.capacity() << endl;
     return 0;
 }
