@@ -103,3 +103,20 @@ int Queue::pop() {
         this->_front = this->_back = 0;
     return rtnVal;
 }
+
+/* doubly link list implementation */
+void DoublyLinkedList::insertNode(int val) {
+
+}
+
+int DoublyLinkedList::deleteNode(int val) {
+    return val;
+}
+
+void DoublyLinkedList::traverse() {
+
+}
+
+int DoublyLinkedList::size() {
+    return this->_size;
+}

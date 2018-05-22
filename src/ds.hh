@@ -36,7 +36,21 @@ public:
 };
 
 class DoublyLinkedList {
-
+private:
+    struct ListNode {
+        int val;
+        ListNode* next;
+        ListNode(int v): val(v), next(nullptr) {};
+    };
+    ListNode* head;
+    ListNode* tail;
+    int _size = 0;
+public:
+    DoublyLinkedList(): head(nullptr), tail(nullptr), _size(0) {};
+    void insertNode(int val);
+    int deleteNode(int val);
+    void traverse();
+    int size();
 };
 
 class HashTable {

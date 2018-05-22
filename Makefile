@@ -5,7 +5,7 @@ OUTPUT=ds
 SRCDIR=./src
 OBJDIR=./objs
 
-_OBJS=ds.o sort.o
+_OBJS=ds.o sort.o algo.o
 OBJS = $(patsubst %,$(OBJDIR)/%,$(_OBJS))
 ENTRY = $(SRCDIR)/main.cc
 
