@@ -3,9 +3,11 @@
 
 void dijkstra();
 /* backtracking */
+void permutationHelper(std::string& str, std::vector<std::string>& ans, std::string& temp);
 void permutation(std::string str);
+void subsetHelper(std::string& str, std::vector<std::string>& ans, std::string& temp, int index);
 void subset(std::string str);
-
+void combinationSum(std::vector<int> nums, int target);
 /* dp */
 
 class Dp {

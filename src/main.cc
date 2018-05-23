@@ -7,9 +7,9 @@
 
 int main() {
     using namespace std;
-    string strA = "star apple juice";
-    string strB = "apple pie";
-    Dp dp;
-    cout << dp.longestCommonSubsequence(strA, strB) << endl;
+    // permutation("abcde");
+    // subset("abc");
+    vector<int> ans{2,3,5,7};
+    combinationSum(ans, 7);
     return 0;
 }

@@ -1,5 +1,6 @@
 #include <algo.hh>
 #include <iostream>
+#include <algorithm>
 
 int Dp::knapsackProblem(std::vector<int>& weights, std::vector<int>& value, int maxWeight) {
     const size_t size = weights.size();
@@ -49,4 +50,72 @@ int Dp::lcsHelper(std::string& strA, std::string& strB, int indexA, int indexB, 
 int Dp::longestCommonSubsequence(std::string& strA, std::string& strB) {
     std::vector<std::vector<int>> dp(strA.size(), std::vector<int>(strB.size(), -1));
     return lcsHelper(strA, strB, strA.size() - 1, strB.size() - 1, dp);
+}
+
+/* backtracking */
+void permutationHelper(std::string& str, std::vector<std::string>& ans, std::string& temp) {
+    if (str.empty()) {
+        ans.push_back(temp);
+        return;
+    }
+    for (int i = 0; i < str.size(); ++i) {
+        char c = str[i];
+        temp += c;
+        str.erase(str.begin() + i);
+        permutationHelper(str, ans, temp);
+        temp.pop_back();
+        str.insert(str.begin() + i, c);
+    }
+}
+// abcde
+// abcde
+// abced
+void permutation(std::string str) {
+    std::vector<std::string> ans;
+    std::string temp;
+    permutationHelper(str, ans, temp);
+    for (std::string str: ans)
+        std::cout << str << std::endl;
+}
+
+void subsetHelper(std::string& str, std::vector<std::string>& ans, std::string& temp, int index) {
+    ans.push_back(temp);
+    for (int i = index; i < str.size(); ++i) {
+        temp += str[i];
+        subsetHelper(str, ans, temp, i + 1);
+        temp.pop_back();
+    }
+}
+void subset(std::string str) {
+    std::vector<std::string> ans;
+    std::string temp;
+    subsetHelper(str, ans, temp, 0);
+    for (std::string str: ans)
+        std::cout << str << std::endl;
+}
+
+// 2,3,6,7 => 7
+void combinationSumHelper(std::vector<int>& nums, int target, std::vector<std::vector<int>>& ans, std::vector<int>& temp, int index) {
+    if (target < 0)
+        return;
+    if (target == 0) {
+        ans.push_back(temp);
+        return;
+    }
+    for (int i = index; i < nums.size(); ++i) {
+        temp.push_back(nums[i]);
+        combinationSumHelper(nums, target - nums[i], ans, temp, i);
+        temp.pop_back();
+    }
+}
+void combinationSum(std::vector<int> nums, int target) {
+    std::vector<std::vector<int>> ans;
+    std::vector<int> temp;
+    std::sort(nums.begin(), nums.end());
+    combinationSumHelper(nums, target, ans, temp, 0);
+    for (auto arr: ans) {
+        for (auto e: arr)
+            std::cout << e << " ";
+        std::cout << std::endl;
+    }
 }
