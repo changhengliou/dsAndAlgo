@@ -1,5 +1,7 @@
 #include <sort.hh>
 
+extern void swap(std::vector<int>& arr, int a, int b);
+
 /* quicksort */
 int partition(std::vector<int>& arr, int left, int right) {
     const int mid = (right - left) / 2 + left;
@@ -69,11 +71,4 @@ void heapsort(std::vector<int>& arr, int n) {
 }
 void heapify(std::vector<int>& arr, int root) {
 
-}
-
-/* utility */
-void swap(std::vector<int>& arr, int a, int b) {
-    int temp = arr[a];
-    arr[a] = arr[b];
-    arr[b] = temp;
 }

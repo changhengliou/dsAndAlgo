@@ -33,6 +33,9 @@
         "ratio": "cpp",
         "system_error": "cpp",
         "tuple": "cpp",
-        "__functional_03": "cpp"
+        "__functional_03": "cpp",
+        "__mutex_base": "cpp",
+        "istream": "cpp",
+        "streambuf": "cpp"
     }
 }

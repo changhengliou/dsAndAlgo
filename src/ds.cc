@@ -3,6 +3,7 @@
 #include <iostream>
 #include <ds.hh>
 
+extern void swap(std::vector<int>& arr, int a, int b);
 /* stack implementation */
 Stack::Stack() {
     this->_arr = new int[this->_capacity];
@@ -106,6 +107,15 @@ int Queue::pop() {
 }
 
 /* doubly link list implementation */
+DoublyLinkedList::~DoublyLinkedList() {
+    ListNode* prev = nullptr;
+    ListNode* ptr = this->head;
+    while (ptr != nullptr) {
+        prev = ptr;
+        ptr = ptr->next;
+        delete prev;
+    }
+}
 void DoublyLinkedList::insertNode(int val) {
     ListNode* newNode = new ListNode(val);
     this->_size += 1;
@@ -155,4 +165,90 @@ void DoublyLinkedList::traverse() {
 
 int DoublyLinkedList::size() {
     return this->_size;
+}
+
+/* Linked list Heap implementation */
+LinkedListHeap::LinkedListHeap() {
+    this->predicate = [](int x, int y) -> bool { return x > y; };
+}
+LinkedListHeap::LinkedListHeap(bool (*predicate)(int x, int y)) {
+    this->predicate = predicate;
+}
+LinkedListHeap::LinkedListHeap(std::vector<int> vec) {
+    // heapify here, not implemented yet
+}
+LinkedListHeap::~LinkedListHeap() {
+    // not implemented yet
+}
+void LinkedListHeap::insertNode(int val) {
+    TreeNode* newNode = new TreeNode(val);
+    TreeNode* ptr = this->head;
+    if (ptr == nullptr) {
+        head = newNode;
+        return;
+    }
+    if (this->predicate(val, ptr->val)) {
+
+    } else {
+
+    }
+}
+void LinkedListHeap::deleteNode(int val) {
+
+}
+void LinkedListHeap::setPredicate(bool (*predicate)(int x, int y)) {
+
+}
+TreeNode* LinkedListHeap::front() {
+    return this->head;
+}
+
+/* Heap implementation */
+Heap::Heap() {
+    this->predicate = [](int x, int y) -> bool { return x > y; };
+}
+Heap::Heap(bool (*predicate)(int x, int y)) {
+    this->predicate = predicate;
+}
+Heap::Heap(std::vector<int> vec) {
+    
+}
+Heap::Heap(std::vector<int> vec, bool (*predicate)(int x, int y)) {
+
+}
+Heap::~Heap() {
+    // not implemented yet
+}
+void Heap::heapify(std::vector<int>& vec, int level) {
+    int left = 2 * level, 
+        right = left + 1,
+        largest = 0;
+    if (left <= vec.size() && this->predicate(vec[left], vec[level])) {
+        largest = left;
+    } else {
+        largest = level;
+    }
+    if (right <= vec.size() && this->predicate(vec[right], vec[level])) {
+        largest = right;
+    }
+    if (largest != level) {
+        swap(vec, largest, level);
+        heapify(vec, largest);
+    }
+}
+void Heap::insertNode(int val) {
+    if (this->predicate(val, 0)) {
+
+    } else {
+
+    }
+}
+void Heap::deleteNode(int val) {
+
+}
+void Heap::setPredicate(bool (*predicate)(int x, int y)) {
+
+}
+int Heap::front() {
+    return 0;
 }

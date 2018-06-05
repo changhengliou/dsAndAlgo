@@ -1,12 +1,12 @@
 #include <vector>
+struct TreeNode {
+    int val;
+    TreeNode* left;
+    TreeNode* right;
+    TreeNode(int v): val(v), left(nullptr), right(nullptr) {};
+};
 class BSTree {
 private:
-    struct TreeNode {
-        int val;
-        TreeNode* left;
-        TreeNode* right;
-        TreeNode(int v): val(v), left(nullptr), right(nullptr) {};
-    };
     TreeNode* head;
 public:
     void traverse();
