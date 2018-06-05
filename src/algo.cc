@@ -119,3 +119,7 @@ void combinationSum(std::vector<int> nums, int target) {
         std::cout << std::endl;
     }
 }
+// n = 3 => ((())) ()()() (())() ()(()) (()())
+void generateParenthesis(int n) {
+
+}

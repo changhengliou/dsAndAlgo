@@ -1,5 +1,6 @@
 #include <memory>
 #include <cassert>
+#include <iostream>
 #include <ds.hh>
 
 /* stack implementation */
@@ -106,15 +107,50 @@ int Queue::pop() {
 
 /* doubly link list implementation */
 void DoublyLinkedList::insertNode(int val) {
-
+    ListNode* newNode = new ListNode(val);
+    this->_size += 1;
+    if (this->head == nullptr) {
+        this->head = newNode;
+        this->tail = newNode;
+        return;
+    }
+    tail->next = newNode;
+    tail = newNode;
 }
 
 int DoublyLinkedList::deleteNode(int val) {
-    return val;
+    ListNode* prev = nullptr;
+    ListNode* ptr = this->head;
+    while (ptr != nullptr) {
+        // delete operation
+        if (ptr->val == val) {
+            this->_size -= 1;
+            if (ptr == this->head) {
+                this->head = this->head->next;
+                delete ptr;
+                ptr = this->head;
+            } else {
+                if (ptr == this->tail)
+                    this->tail = prev;
+                prev->next = ptr->next;
+                delete ptr;
+                ptr = prev->next;
+            }
+        } else {
+            prev = ptr;
+            ptr = ptr->next;
+        }
+    }
+    return this->_size;
 }
 
 void DoublyLinkedList::traverse() {
-
+    ListNode* ptr = this->head;
+    while (ptr != nullptr) {
+        std::cout << ptr->val << " ";
+        ptr = ptr->next;
+    }
+    std::cout << std::endl;
 }
 
 int DoublyLinkedList::size() {
